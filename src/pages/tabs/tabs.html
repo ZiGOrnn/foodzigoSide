@@ -1,0 +1,7 @@
+<ion-tabs color="light">
+  <ion-tab tabIcon="home" tabTitle="Home" [root]="tab1Root"></ion-tab>
+  <ion-tab tabIcon="paper" tabTitle="Feed" [root]="tab2Root"></ion-tab>
+  <ion-tab tabIcon="custom-mobile" class="top-44"></ion-tab>
+  <ion-tab tabIcon="cart" tabTitle="Cart" [root]="tab3Root"></ion-tab>
+  <ion-tab tabIcon="contact" tabTitle="Me" (ionSelect)="toggleMenu()"></ion-tab>
+</ion-tabs>

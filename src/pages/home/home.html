@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="orange">
+    <ion-buttons left>
+      <button ion-button icon-only>
+        <ion-icon name="ionic"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar (ionInput)="getItems($event)" class="search-bar"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="options" color=""></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item-divider>
+    <span ion-row>
+      <h3>Add Divider</h3>
+      &nbsp;
+      <p ion-text color="orange">Restaurant</p>
+    </span>
+    <button ion-button (click)="addClick()" outline item-right color="orange1">+ Add</button>
+  </ion-item-divider>
+
+  <ion-list no-line>
+
+    <button ion-item detail-none no-margin *ngFor="let p of menuRestaurant" (click)="onFood(p)">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/F.png">
+      </ion-thumbnail>
+      <div text-capitalize>
+        <h2 ion-text color="dark" class="fw500">{{p.title}}</h2>
+        <p class="text-12x" ion-text color="star">Don't Know What To Do!</p>
+        <p ion-text class="text-12"><span>1 km : 30-60min</span></p>
+      </div>
+
+      <button ion-button clear icon-left text-start item-right color="star">
+        <span class="button-inner">
+          <ion-icon name="star"></ion-icon>
+          {{p.number}}
+        </span>
+      </button>
+
+    </button>
+
+  </ion-list>
+</ion-content>

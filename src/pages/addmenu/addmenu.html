@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar color="dark1">
+    <button ion-button color="yel" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>addmenu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="bg-style">
+  <ion-card>
+    <ion-card-header text-center>
+      Add Menu
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item no-lines>
+          <ion-label floating>
+            <ion-icon name="add-circle"></ion-icon>
+            Name Menu
+          </ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="cash"></ion-icon>
+            Price
+          </ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+
+        <br>
+
+        <button ion-button icon-start full small color="yello" (click)=onSingin(user)>
+          <ion-icon name="add-circle"></ion-icon>
+          Add Restaurant
+        </button>
+
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item-divider no-margin no-lines text-center color="yel">
+      <p ion-text color="dark">MENU</p>
+  </ion-item-divider>
+
+  <button ion-item ion-col>
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/F.png">
+      </ion-thumbnail>
+      <h3>
+        <b>FOODZIGO</b>
+      </h3>
+      <p class="text-11x">Mahasakham</p>
+      <ion-buttons item-end>
+        <button ion-button color="danger" small>
+          190฿
+        </button>
+      </ion-buttons>
+    </button>
+
+</ion-content>

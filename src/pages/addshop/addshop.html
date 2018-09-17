@@ -1,0 +1,144 @@
+<ion-header text-center>
+
+  <ion-navbar color="orange">
+    <button ion-button color="" menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Yous Restaurant</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <ion-item no-padding no-marging text-center no-lines color="gold">
+      <ion-img width="150" height="150" src="../../assets/imgs/F.png"></ion-img>
+    </ion-item>
+  </div>
+
+  <ion-grid no-padding fixed>
+    <ion-row no-padding>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <form [formGroup]="onYourRestaurantForm" class="list-form">
+              <ion-list margin-bottom>
+                <ion-item>
+                  <ion-label color="dark">Complement with my account/profile data:</ion-label>
+                  <ion-checkbox formControlName="profiledata" color="dark"></ion-checkbox>
+                </ion-item>
+                <p ion-text color="danger" class="text-1x has-error" *ngIf="onYourRestaurantForm.get('profiledata').touched && onYourRestaurantForm.get('profiledata').hasError('required')">
+                  This field is required
+                </p>
+
+                <ion-item>
+                  <ion-label color="dark" stacked>Restaurant title:</ion-label>
+                  <ion-input type="text" placeholder="Type here..." formControlName="restaurantTitle"></ion-input>
+                </ion-item>
+                <p ion-text color="danger" class="text-1x has-error" *ngIf="onYourRestaurantForm.get('restaurantTitle').touched && onYourRestaurantForm.get('restaurantTitle').hasError('required')">
+                  This field is required
+                </p>
+
+                <ion-item>
+                  <ion-label color="dark" stacked>Restaurant Address:</ion-label>
+                  <ion-input type="text" placeholder="Type here..." formControlName="restaurantAddress"></ion-input>
+                </ion-item>
+                <p ion-text color="danger" class="text-1x has-error" *ngIf="onYourRestaurantForm.get('restaurantAddress').touched && onYourRestaurantForm.get('restaurantAddress').hasError('required')">This
+                  field is required</p>
+
+                <ion-item>
+                  <ion-label color="dark" stacked>Restaurant Type:</ion-label>
+                  <ion-select formControlName="restaurantType">
+                    <ion-option value="house">Pasta</ion-option>
+                    <ion-option value="mansion">Pizza</ion-option>
+                    <ion-option value="Apartment">Fast Food</ion-option>
+                    <ion-option value="comroom">Street Food</ion-option>
+                    <ion-option value="farm">Barbecue</ion-option>
+                    <ion-option value="farm">Veggie</ion-option>
+                  </ion-select>
+                </ion-item>
+
+
+              </ion-list>
+
+              <div padding-vertical>
+                <h5 ion-text color="dark" margin-bottom class="fw500">Add Images of Restaurant <span ion-text class="fw300">(Max.
+                    5)</span></h5>
+                <button ion-button icon-only color="light">
+                  <ion-icon name="photos" color="dark"></ion-icon>
+                </button>
+                <button ion-button icon-only color="light">
+                  <ion-icon name="photos" color="dark"></ion-icon>
+                </button>
+                <button ion-button icon-only color="light">
+                  <ion-icon name="photos" color="dark"></ion-icon>
+                </button>
+                <button ion-button icon-only color="light">
+                  <ion-icon name="photos" color="dark"></ion-icon>
+                </button>
+                <button ion-button icon-only color="light">
+                  <ion-icon name="photos" color="dark"></ion-icon>
+                </button>
+              </div>
+
+              <div padding-vertical>
+                <h5 ion-text color="dark" margin-bottom class="fw500">Add Dishes</h5>
+
+                <ion-list margin-bottom>
+                  <ion-item>
+                    <ion-label color="dark" stacked>Dish Name:</ion-label>
+                    <ion-input type="text" placeholder="Type here..."></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label color="dark" stacked>Dish Type:</ion-label>
+                    <ion-select formControlName="restaurantType">
+                      <ion-option value="house">Pasta</ion-option>
+                      <ion-option value="mansion">Pizza</ion-option>
+                      <ion-option value="Apartment">Fast Food</ion-option>
+                      <ion-option value="comroom">Street Food</ion-option>
+                      <ion-option value="farm">Barbecue</ion-option>
+                      <ion-option value="farm">Veggie</ion-option>
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label color="dark" stacked>Dish Ingredients:</ion-label>
+                    <ion-textarea rows="5" placeholder="Type here..."></ion-textarea>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label color="dark" stacked>Dish Price:</ion-label>
+                    <ion-input type="number" placeholder="Type here..."></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <h6 ion-text color="dark" margin-bottom class="fw500">Add Images of Dish <span ion-text class="fw300">(Max.
+                        5)</span></h6>
+                    <button ion-button icon-only color="light">
+                      <ion-icon name="photos" color="dark"></ion-icon>
+                    </button>
+                    <button ion-button icon-only color="light">
+                      <ion-icon name="photos" color="dark"></ion-icon>
+                    </button>
+                    <button ion-button icon-only color="light">
+                      <ion-icon name="photos" color="dark"></ion-icon>
+                    </button>
+                    <button ion-button icon-only color="light">
+                      <ion-icon name="photos" color="dark"></ion-icon>
+                    </button>
+                    <button ion-button icon-only color="light">
+                      <ion-icon name="photos" color="dark"></ion-icon>
+                    </button>
+                  </ion-item>
+                </ion-list>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

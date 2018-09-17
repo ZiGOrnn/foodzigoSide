@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar hideBackButton color="orange">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back" color=""></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Price</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="favorite(restaurant)">
+        <ion-icon color="" name="heart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding no-margin>
+  <img src="../../assets/imgs/dishes/dish01.jpg">
+  <ion-list no-padding no-margin no-lines text-center>
+
+    <ion-item text-center>
+      <h1>ราคา</h1>
+      <h2>
+        <b>190฿</b>
+      </h2>
+      <br>
+      <h3>Quantity</h3>
+    </ion-item>
+
+    <ion-grid no-margin>
+      <ion-row no-margin>
+        <ion-col no-margin>
+          <button ion-button icon-only clear (click)="incrementQty()" color="orange">
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col>
+          <ion-item text-center>
+            <h1>{{ currentNumber }}</h1>
+          </ion-item>
+        </ion-col>
+
+        <ion-col no-margin>
+          <button ion-button icon-only clear (click)="decrementQty()" color="orange">
+            <ion-icon name="add-circle"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <button ion-button icon-start color="orange">
+      <ion-icon name="cart" color="light"></ion-icon>
+      Add Cart ({{cart}}฿)
+    </button>
+  </ion-list>
+</ion-content>

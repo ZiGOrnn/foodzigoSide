@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar hideBackButton color="orange">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back" color=""></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>
+      <span ion-text color="">Restaurant</span>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="favorite(restaurant)">
+        <ion-icon color="" name="heart"></ion-icon>
+      </button>
+      <button ion-button (click)="share(restaurant)">
+        <ion-icon color="" name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-margin class="full-width">
+    <ion-card-header no-margin no-padding>
+      <ion-slides pager color="dark">
+        <ion-slide>
+          <img src="../../assets/imgs/restaurants/restaurant01.jpg">
+        </ion-slide>
+        <ion-slide>
+          <img src="../../assets/imgs/restaurants/restaurant03.jpg">
+        </ion-slide>
+      </ion-slides>
+    </ion-card-header>
+    <ion-card-content no-margin>
+      <br>
+      <h1 ion-text color="dark" class="fw700" text-center>Buddha Bar</h1>
+      <p ion-text color="danger" text-center>1 km : 30-60min</p>
+      <div text-center>
+        <ion-badge class="text-11" color="star">Oriental</ion-badge>
+        <ion-badge color="dark" class="text-11">
+          <ion-icon class="text-11" name="star"></ion-icon>
+          4.4
+        </ion-badge>
+      </div>
+      <br>
+      <ion-item color="orange" text-center>MENU</ion-item>
+
+      <ion-item no-padding tapplable (click)="openDish()">
+        <ion-thumbnail item-start>
+          <img src="../../assets//imgs/dishes/dish01.jpg" alt="">
+        </ion-thumbnail>
+        <h2 ion-text color="dark">Pacific Jammed</h2>
+        <p ion-text color="danger">sweet potatos, spices</p>
+        <button ion-button item-end color="secondary">฿120</button>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

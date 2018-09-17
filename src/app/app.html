@@ -1,0 +1,82 @@
+<ion-menu [content]="content" side="right">
+  <ion-header no-margin no-padding>
+    <ion-toolbar color="orange" no-margin no-padding>
+      <ion-list no-margin no-padding>
+        <ion-item color="orange1" no-lines>
+          <ion-avatar item-left>
+            <img src="../assets/imgs/F.png">
+          </ion-avatar>
+          <h2 ion-text class="text-white fw700 text-15x">
+            <b>ZIGO FOOD</b>
+          </h2>
+          <p ion-text color="">Mahasakham</p>
+
+          <!-- <button ion-button icon-left round color="rede" menuClose>
+            <ion-icon name="contact"></ion-icon>
+            My Account
+          </button> -->
+
+        </ion-item>
+      </ion-list>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="style">
+    <ion-list no-lines no-margin>
+
+      <ion-item-divider no-margin no-lines color="light">
+        <p ion-text color="">MENU</p>
+      </ion-item-divider>
+
+    </ion-list>
+
+    <!-- <button menuClose ion-item *ngFor="let p of menuPage" (click)="openPage(p)" color="" no-lines>
+      <ion-icon name="{{p.icom}}" color=""></ion-icon>
+      <span ion-text color="">{{p.title}}</span>
+    </button> -->
+
+    <!-- <ion-item color="">
+      <button no-padding color="" *ngFor="let p of pLogout" (click)="openPage(p)">
+        <span class="button-inner">
+          <ion-icon name="cloud-upload"></ion-icon>
+          &nbsp;Add Restaurant
+        </span>
+      </button>
+    </ion-item> -->
+
+    <ion-item *ngFor="let p of menuPage" menuClose (click)="openPage(p)">
+      <button text-start no-padding>
+        <span class="button-inner" ion-text color="dark1">
+          <ion-icon name="{{p.icon}}"></ion-icon>
+          &nbsp;{{p.title}}
+        </span>
+      </button>
+    </ion-item>
+
+    <ion-item-divider no-lines color="light">
+    </ion-item-divider>
+
+    <ion-item *ngFor="let p of menuAdd" menuClose (click)="openPage(p)">
+      <button text-start no-padding>
+        <span class="button-inner" ion-text color="dark1">
+          <ion-icon name="{{p.icon}}"></ion-icon>
+          &nbsp;{{p.title}}
+        </span>
+      </button>
+    </ion-item>
+
+    <ion-item *ngFor="let p of pLogout" color="light" no-lines menuClose (click)="openPage(p)">
+      <button no-padding>
+        <span class="button-inner">
+          <ion-icon name="log-out"></ion-icon>
+          &nbsp;{{p.title}}
+        </span>
+      </button>
+    </ion-item>
+
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

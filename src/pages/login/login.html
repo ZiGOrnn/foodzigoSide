@@ -1,0 +1,101 @@
+<ion-content no-padding no-marging text-center class="bg-style">
+<br>
+<br>
+  <div>
+      <img src="../../assets/imgs/ZIGO.png" class="subtitle">
+  </div>
+<br>
+  <ion-card class="card-background-page">
+    <ion-card-header>
+      <ion-segment color="orange1" [(ngModel)]="pet">
+        <ion-segment-button value="login">
+          Login
+        </ion-segment-button>
+        <ion-segment-button value="Register">
+          Register
+        </ion-segment-button>
+      </ion-segment>
+    </ion-card-header>
+
+    <ion-card-content class="card-title">
+      <div [ngSwitch]="pet">
+        <ion-list *ngSwitchCase="'login'">
+          <ion-item no-lines>
+            <ion-label floating>
+              <ion-icon color="orange1" name="mail"></ion-icon>
+              Email
+            </ion-label>
+            <ion-input type="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              <ion-icon color="orange1" name="md-lock"></ion-icon>
+              Password
+            </ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <p align='right'><a>
+                <font size="1">Forgot Password?</font>
+              </a></p>
+          </ion-item>
+          <button ion-button icon-start full small color="" (click)=onSingin(user) class="card-subtitle">
+            <ion-icon name="log-in"></ion-icon>
+            SING IN
+          </button>
+          or
+          <ion-row no-padding>
+            <ion-col no-padding>
+              <button ion-button icon-start full small color="facebook" (click)=onSingin(user)>
+                <ion-icon name="logo-facebook"></ion-icon>
+                facebook
+              </button>
+            </ion-col>
+            &nbsp;
+            <ion-col no-padding>
+              <button ion-button icon-start full small color="google" (click)=onSingin(user)>
+                <ion-icon name="logo-googleplus"></ion-icon>
+                google
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Register'">
+          <ion-item no-lines>
+            <ion-label floating>
+              <ion-icon color="orange1" name="person"></ion-icon>
+              Full Name
+            </ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              <ion-icon color="orange1" name="mail"></ion-icon>
+              Email
+            </ion-label>
+            <ion-input type="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              <ion-icon color="orange1" name="md-lock"></ion-icon>
+              Password
+            </ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+          <br>
+          <button ion-button icon-start full small color="" (click)="onSingup(user)">
+            <ion-icon name="person-add"></ion-icon>
+            SING UP
+          </button>
+        </ion-list>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

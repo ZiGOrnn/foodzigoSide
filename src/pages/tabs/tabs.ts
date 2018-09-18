@@ -15,7 +15,6 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = 'FeedPage';
   tab3Root = 'CartPage';
-  con = 1;
 
 
   constructor(private angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private toast: ToastController) {

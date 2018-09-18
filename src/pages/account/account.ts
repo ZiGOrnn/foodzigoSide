@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Profile } from '../../data/profile';
 import { TabsPage } from '../tabs/tabs';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the AccountPage page.
@@ -20,8 +21,14 @@ import { TabsPage } from '../tabs/tabs';
 export class AccountPage {
 
   profile = {} as Profile;
+  profileData: Observable<any>;
 
   constructor(private angularFireAuth: AngularFireAuth, private angularFireDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+  
+    this.angularFireAuth.authState.subscribe(data => {
+      this.profileData = angularFireDatabase.object(`profile/${data.uid}`).valueChanges();
+    });
+  
   }
 
   ionViewDidLoad() {

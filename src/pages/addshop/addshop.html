@@ -130,7 +130,13 @@
                   </ion-item>
                 </ion-list>
               </div>
+              <button ion-button block color="orange1" (click)="sendData()" [disabled]="!onYourRestaurantForm.valid">
+                <ion-icon name="cloud-upload"></ion-icon>
+                &nbsp;
+                + Restaurant
+              </button>
             </form>
+
           </ion-card-content>
         </ion-card>
 

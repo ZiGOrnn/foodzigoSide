@@ -1,10 +1,10 @@
 <ion-content no-padding no-marging text-center class="bg-style">
-<br>
-<br>
+  <br>
+  <br>
   <div>
-      <img src="../../assets/imgs/ZIGO.png" class="subtitle">
+    <img src="../../assets/imgs/ZIGO.png" class="subtitle">
   </div>
-<br>
+  <br>
   <ion-card class="card-background-page">
     <ion-card-header>
       <ion-segment color="orange1" [(ngModel)]="pet">
@@ -17,7 +17,7 @@
       </ion-segment>
     </ion-card-header>
 
-    <ion-card-content class="card-title">
+    <ion-card-content>
       <div [ngSwitch]="pet">
         <ion-list *ngSwitchCase="'login'">
           <ion-item no-lines>
@@ -40,21 +40,22 @@
                 <font size="1">Forgot Password?</font>
               </a></p>
           </ion-item>
-          <button ion-button icon-start full small color="" (click)=login(user) class="card-subtitle">
+          <br>
+          <button ion-button icon-start full color="orange1" (click)=login(user) class="card-subtitle">
             <ion-icon name="log-in"></ion-icon>
             SING IN
           </button>
-          or
+          <span ion-text color="light">Or Sign Up with:</span> 
           <ion-row no-padding>
             <ion-col no-padding>
-              <button ion-button icon-start full small color="facebook" (click)=onSingin(user)>
+              <button ion-button icon-start full color="facebook" (click)=onSingin(user)>
                 <ion-icon name="logo-facebook"></ion-icon>
                 facebook
               </button>
             </ion-col>
             &nbsp;
             <ion-col no-padding>
-              <button ion-button icon-start full small color="google" (click)=onSingin(user)>
+              <button ion-button icon-start full color="google" (click)=onSingin(user)>
                 <ion-icon name="logo-googleplus"></ion-icon>
                 google
               </button>
@@ -64,13 +65,6 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'Register'">
-          <ion-item no-lines>
-            <ion-label floating>
-              <ion-icon color="orange1" name="person"></ion-icon>
-              Full Name
-            </ion-label>
-            <ion-input type="text" [(ngModel)]="user.fullName"></ion-input>
-          </ion-item>
 
           <ion-item>
             <ion-label floating>
@@ -87,8 +81,17 @@
             </ion-label>
             <ion-input type="password" [(ngModel)]="user.password"></ion-input>
           </ion-item>
+
+          <!-- <ion-item>
+            <ion-label floating>
+              <ion-icon color="orange1" name="md-lock"></ion-icon>
+              Confirm Password
+            </ion-label>
+            <ion-input type="password" [(ngModel)]="user.comfirmPassword"></ion-input>
+          </ion-item> -->
+
           <br>
-          <button ion-button icon-start full small color="" (click)="register(user)">
+          <button ion-button icon-start full color="orange1" (click)="register(user)">
             <ion-icon name="person-add"></ion-icon>
             SING UP
           </button>

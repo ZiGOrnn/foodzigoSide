@@ -13,6 +13,30 @@
 
 <ion-content padding>
 
+  <ion-card>
+    <ion-card-content>
+      <span>
+        <b>First Name:</b>
+        {{ (profileData | async)?.firstName }}
+      </span>
+      <br>
+      <span>
+        <b>Last Name:</b> 
+        {{ (profileData | async)?.lastName }}
+      </span>
+      <br>
+      <span>
+        <b>Tel:</b> 
+        {{ (profileData | async)?.tel }}
+      </span>
+      <br>
+      <span>
+        <b>Address:</b> 
+        {{ (profileData | async)?.address }}
+      </span>
+    </ion-card-content>
+  </ion-card>
+
   <ion-item>
     <ion-label color="dark" stacked>First Name:</ion-label>
     <ion-input type="text" placeholder="First Name Input" [(ngModel)]="profile.firstName"></ion-input>

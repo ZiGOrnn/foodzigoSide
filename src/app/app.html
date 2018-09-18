@@ -7,9 +7,9 @@
             <img src="../assets/imgs/F.png">
           </ion-avatar>
           <h2 ion-text class="text-white fw700 text-15x">
-            <b>ZIGO FOOD</b>
+            <b>{{ (profileData | async)?.firstName }}&nbsp;{{ (profileData | async)?.lastName }}</b>
           </h2>
-          <p ion-text color="">Mahasakham</p>
+          <p ion-text color="" *ngFor="let p of pages">{{p.title}}</p>
 
           <!-- <button ion-button icon-left round color="rede" menuClose>
             <ion-icon name="contact"></ion-icon>

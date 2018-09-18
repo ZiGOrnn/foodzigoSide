@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home'
+import { AngularFireAuth } from 'angularfire2/auth'
 
 
 @IonicPage()
@@ -14,13 +15,23 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = 'FeedPage';
   tab3Root = 'CartPage';
-  
+  con = 1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+
+  constructor(private angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private toast: ToastController) {
+  
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+    this.angularFireAuth.authState.subscribe(data => {
+      if (data.email) {
+        this.toast.create({
+          message: `Welcom to APP_NAME, ${data.email}`,
+          duration: 3000,
+          position: 'top'
+        }).present();
+      }
+    });
   }
 
   toggleMenu() {

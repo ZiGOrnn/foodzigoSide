@@ -25,7 +25,7 @@
               <ion-icon color="orange1" name="mail"></ion-icon>
               Email
             </ion-label>
-            <ion-input type="email"></ion-input>
+            <ion-input type="email" [(ngModel)]="user.email"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -33,14 +33,14 @@
               <ion-icon color="orange1" name="md-lock"></ion-icon>
               Password
             </ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
           </ion-item>
           <ion-item>
             <p align='right'><a>
                 <font size="1">Forgot Password?</font>
               </a></p>
           </ion-item>
-          <button ion-button icon-start full small color="" (click)=onSingin(user) class="card-subtitle">
+          <button ion-button icon-start full small color="" (click)=login(user) class="card-subtitle">
             <ion-icon name="log-in"></ion-icon>
             SING IN
           </button>
@@ -69,7 +69,7 @@
               <ion-icon color="orange1" name="person"></ion-icon>
               Full Name
             </ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="user.fullName"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -77,7 +77,7 @@
               <ion-icon color="orange1" name="mail"></ion-icon>
               Email
             </ion-label>
-            <ion-input type="email"></ion-input>
+            <ion-input type="email" [(ngModel)]="user.email"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -85,10 +85,10 @@
               <ion-icon color="orange1" name="md-lock"></ion-icon>
               Password
             </ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
           </ion-item>
           <br>
-          <button ion-button icon-start full small color="" (click)="onSingup(user)">
+          <button ion-button icon-start full small color="" (click)="register(user)">
             <ion-icon name="person-add"></ion-icon>
             SING UP
           </button>

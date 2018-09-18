@@ -4,8 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NavController } from 'ionic-angular';
 
+
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { AngularFireAuth } from 'angularfire2/auth'
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { Profile } from '../data/profile';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,22 +18,31 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
-
-  pages: Array<{ title: string, component: any, icom: string }>;
+  rootPage: any = LoginPage;
+  profileData: Observable<any>;
+  // profileData: any;
+  pages: Array<{ title: string }>;
   pLogout: Array<{ title: string, component: any }>;
-  menuPage: Array<{ title: string, component: any, icon: string}>;
+  menuPage: Array<{ title: string, component: any, icon: string }>;
   menuAdd: Array<{ title: string, component: any, icon: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private angularFireAuth: AngularFireAuth, private angularFireDatabase: AngularFireDatabase,
+    public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
+    this.angularFireAuth.authState.subscribe(data => {
+      this.pages=[
+        {title: data.email}
+      ];
+      this.profileData = angularFireDatabase.object(`profile/${data.uid}`).valueChanges();
+    });
+    
+
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: TabsPage, icom: 'home' },
-      { title: 'Add Restaurant', component: 'AddPage', icom: 'md-restaurant'},
-      // { title: 'List', component: ListPage, icom: 'list-box' },
-    ];
+    // this.pages = [
+    //   { title: 'Home', component: TabsPage, icom: 'home' },
+    //   // { title: 'List', component: ListPage, icom: 'list-box' },
+    // ];
     // this.pages.push({title: 'Add Restaurant', component: 'AddshopPage', icom: 'cloud-upload'});
 
     this.pLogout = [
@@ -36,13 +50,13 @@ export class MyApp {
     ];
 
     this.menuPage = [
-      { title: 'Home', component: TabsPage, icon: 'home'},
-      { title: 'Register Restaurant', component: 'AddshopPage', icon: 'clipboard'},
-      { title: 'Like Restaurant', component: 'LikePage', icon: 'md-thumbs-up'}
+      { title: 'Home', component: TabsPage, icon: 'home' },
+      { title: 'Register Restaurant', component: 'AddshopPage', icon: 'clipboard' },
+      { title: 'Like Restaurant', component: 'LikePage', icon: 'md-thumbs-up' }
     ];
-    this.menuAdd =[
-      { title: 'Setting', component: 'AccountPage', icon: 'cog'},
-      { title: 'Help', component: 'CartPage', icon: 'help-circle'}
+    this.menuAdd = [
+      { title: 'Setting', component: 'AccountPage', icon: 'cog' },
+      { title: 'Help', component: 'CartPage', icon: 'help-circle' }
     ];
   }
 
@@ -60,4 +74,10 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  // createProfile(){
+  //   this.angularFireAuth.authState.take(1).subscribe(auth =>{
+  //     this.angularFireDatabase.list(`profile/${auth.uid}`).push(this.profile);
+  //   });
+  // }
 }

@@ -6,7 +6,8 @@ let restaurant: Array<any> = [
         picture: "../assets/imgs/restaurants/restaurant14.jpg",
         thumbnail: "../assets/imgs/restaurants/restaurant14sq.jpg",
         images: [],
-        tags: "3.8",
+        tags: "Oriental",
+        rating: 3.8,
         dishes: [{
             id: 1,
             name: "เบเกอรี/เค้ก",
@@ -17,17 +18,17 @@ let restaurant: Array<any> = [
     {
         id: 2,
         address: "ปทุมวัน",
-        title: "Clinton St. Baking Company",
-        picture: "",
-        thumbnail: "",
+        title: "Patissez",
+        picture: "../assets/imgs/restaurants/restaurant03.jpg",
+        thumbnail: "../assets/imgs/restaurants/restaurant03sq.jpg",
         images: [],
-        tags: "3.8",
+        tags: "Variable",
+        rating: 4.2,
         dishes: [{
             id: 1,
-            name: "",
-            price: 120,
-            picture: ""
+            name: "Lemon Meringue Donut",
+            price: 130,
+            picture: "../assets/imgs/dishes/dish06.jpg"
         }]
     }
-
 ];

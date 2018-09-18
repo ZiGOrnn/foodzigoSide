@@ -1,11 +1,11 @@
 <ion-header>
 
-  <ion-navbar>
-    <button ion-button color="yel" menuToggle>
+  <ion-navbar color="orange">
+    <button ion-button menuToggle end>
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-title>account</ion-title>
+    <ion-title>Profile</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,4 +13,28 @@
 
 <ion-content padding>
 
+  <ion-item>
+    <ion-label color="dark" stacked>First Name:</ion-label>
+    <ion-input type="text" placeholder="First Name Input" [(ngModel)]="profile.firstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="dark" stacked>Last Name:</ion-label>
+    <ion-input type="text" placeholder="Last Name Input" [(ngModel)]="profile.lastName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="dark" stacked>Tel:</ion-label>
+    <ion-input type="tel" placeholder="Tel Input" [(ngModel)]="profile.tel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="dark" stacked>Address:</ion-label>
+    <ion-textarea rows="5" placeholder="Address Input" [(ngModel)]="profile.address"></ion-textarea>
+  </ion-item>
+  <br>
+  <button ion-button icon-start full color="orange" (click)="createProfile()">
+    <ion-icon name="create"></ion-icon>
+    Create Profile
+  </button>
 </ion-content>

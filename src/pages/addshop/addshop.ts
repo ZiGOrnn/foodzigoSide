@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Restaurant } from '../../data/restaurant';
+import { Restaurant, RestaurantItem } from '../../data/restaurant';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
@@ -23,7 +23,7 @@ import { TabsPage } from '../tabs/tabs';
 export class AddshopPage {
 
   restaurant$: Observable<Restaurant[]>
-
+  restaurantUid: Observable<any>;
   restaurant: Restaurant = {
     title: '',
     address: '',
@@ -44,10 +44,14 @@ export class AddshopPage {
         }));
       });
 
+      this.angularFireAuth.authState.subscribe(data =>{
+        this.restaurantUid = this.angularFireDatabase.object(`restaurant-item/${data.uid}`).valueChanges();
+      });
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddshopPage');
+    console.log(this.restaurantUid);
   }
 
   addRestaurant(restaurant: Restaurant) {
@@ -56,6 +60,9 @@ export class AddshopPage {
       spinner: 'crescent',
     });
     loader.present();
+    this.angularFireAuth.authState.take(1).subscribe(auth =>{
+      this.angularFireDatabase.object(`restaurant-item/${auth.uid}`).set(this.restaurant);
+    });
     this.restaurantLS.addRestaurant(restaurant).then(ref =>{
       console.log(ref.key);
       loader.dismiss();

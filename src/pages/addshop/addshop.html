@@ -80,7 +80,7 @@
                   <ion-icon name="image" color="dark"></ion-icon>
                 </button>
               </div>
-              
+
               <button ion-button block color="orange1" (click)="addRestaurant(restaurant)" [disabled]="!onYourRestaurantForm.valid">
                 <ion-icon name="cloud-upload"></ion-icon>
                 &nbsp;
@@ -90,22 +90,22 @@
               <ion-item color="dark">Restaurant Add Dish</ion-item>
 
               <button ion-item detail-none no-margin *ngFor="let restaurant of restaurant$ | async" navPush="EditrestaurantPage" [navParams]="{restaurant: restaurant}">
-                  <ion-thumbnail item-start>
-                    <img src="../../assets/imgs/F.png">
-                  </ion-thumbnail>
-                  <div text-capitalize>
-                    <h2 ion-text color="dark" class="fw500">{{restaurant.title}}</h2>
-                    <p class="text-12x" ion-text color="star">{{restaurant.type}}</p>
-                    <p ion-text class="text-12"><span>1 km : 30-60min</span></p>
-                  </div>
-            
-                  <button ion-button clear icon-left text-start item-right color="dark">
-                    <span class="button-inner">
-                      <ion-icon name="md-clipboard"></ion-icon>
-                      Dish
-                    </span>
-                  </button>
+                <ion-thumbnail item-start>
+                  <img src="../../assets/imgs/F.png">
+                </ion-thumbnail>
+                <div text-capitalize>
+                  <h2 ion-text color="dark" class="fw500">{{ (restaurantUid | async)?.title }}</h2>
+                  <p class="text-12x" ion-text color="star">{{ (restaurantUid | async)?.type }}</p>
+                  <p ion-text class="text-12"><span>1 km : 30-60min</span></p>
+                </div>
+
+                <button ion-button clear icon-left text-start item-right color="dark">
+                  <span class="button-inner">
+                    <ion-icon name="md-clipboard"></ion-icon>
+                    Dish
+                  </span>
                 </button>
+              </button>
             </form>
           </ion-card-content>
         </ion-card>

@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { RestaurantListService } from '../../services/restaurant-list/restaurant-list-service';
 import { Observable } from 'rxjs/Observable';
 import { Restaurant } from '../../data/restaurant';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -15,11 +16,15 @@ import { Restaurant } from '../../data/restaurant';
 export class HomePage {
   [x: string]: any;
   restaurant$: Observable<Restaurant[]>
+  resData: Observable<any>;
 
   menuRestaurant: Array<{ title: string, address: string, component: any, tags: string, id: number }>;
 
   constructor(private angularFireAuth: AngularFireAuth, private restaurantLS: RestaurantListService, 
+    private angularFireDatabase: AngularFireDatabase,
     public navCtrl: NavController, public menuCtrl: MenuController) {
+
+      this.resData = angularFireDatabase.object(`restaurant-item/`).valueChanges()
 
     this.restaurant$ = this.restaurantLS
     .getRestaurantList().snapshotChanges().map(caches => {

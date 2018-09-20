@@ -87,7 +87,7 @@
                 + Restaurant
               </button>
               <br>
-              <ion-item color="dark">Restaurant</ion-item>
+              <ion-item color="dark">Restaurant Add Dish</ion-item>
 
               <button ion-item detail-none no-margin *ngFor="let restaurant of restaurant$ | async" navPush="EditrestaurantPage" [navParams]="{restaurant: restaurant}">
                   <ion-thumbnail item-start>
@@ -102,80 +102,14 @@
                   <button ion-button clear icon-left text-start item-right color="dark">
                     <span class="button-inner">
                       <ion-icon name="md-clipboard"></ion-icon>
-                      Edit
+                      Dish
                     </span>
                   </button>
                 </button>
-
-
-
-
-              <div padding-vertical>
-                <ion-item color="dark">+ Add Dishes</ion-item>
-
-
-                <ion-list margin-bottom>
-                  <ion-item>
-                    <ion-label color="dark" stacked>Dish Name:</ion-label>
-                    <ion-input type="text" placeholder="Type here..."></ion-input>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label color="dark" stacked>Dish Type:</ion-label>
-                    <ion-select formControlName="restaurantType">
-                      <ion-option value="house">Pasta</ion-option>
-                      <ion-option value="mansion">Pizza</ion-option>
-                      <ion-option value="Apartment">Fast Food</ion-option>
-                      <ion-option value="comroom">Street Food</ion-option>
-                      <ion-option value="farm">Barbecue</ion-option>
-                      <ion-option value="farm">Veggie</ion-option>
-                    </ion-select>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label color="dark" stacked>Dish Ingredients:</ion-label>
-                    <ion-textarea rows="5" placeholder="Type here..."></ion-textarea>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label color="dark" stacked>Dish Price:</ion-label>
-                    <ion-input type="number" placeholder="Type here..."></ion-input>
-                  </ion-item>
-
-                  <div padding-vertical>
-                    <h5 ion-text color="dark" margin-bottom class="fw500">Add Images of Dish <span ion-text class="fw300">(Max.
-                        5)</span></h5>
-                    <button ion-button icon-only color="light">
-                      <ion-icon name="image" color="dark"></ion-icon>
-                    </button>
-                    <button ion-button icon-only color="light">
-                      <ion-icon name="image" color="dark"></ion-icon>
-                    </button>
-                    <button ion-button icon-only color="light">
-                      <ion-icon name="image" color="dark"></ion-icon>
-                    </button>
-                    <button ion-button icon-only color="light">
-                      <ion-icon name="image" color="dark"></ion-icon>
-                    </button>
-                    <button ion-button icon-only color="light">
-                      <ion-icon name="image" color="dark"></ion-icon>
-                    </button>
-                  </div>
-
-                </ion-list>
-              </div>
             </form>
-            <button ion-button block color="orange1" (click)="sendData()">
-              <ion-icon name="cloud-upload"></ion-icon>
-              &nbsp;
-              + Dishes
-            </button>
-
           </ion-card-content>
         </ion-card>
-
       </ion-col>
-
     </ion-row>
   </ion-grid>
-
-
-
 </ion-content>

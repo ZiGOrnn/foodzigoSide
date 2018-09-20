@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Restaurant } from '../../data/restaurant';
+import { Restaurant, Dish } from '../../data/restaurant';
 import { RestaurantListService } from '../../services/restaurant-list/restaurant-list-service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the EditrestaurantPage page.
@@ -19,10 +20,15 @@ import { RestaurantListService } from '../../services/restaurant-list/restaurant
 export class EditrestaurantPage {
 
   restaurant: Restaurant;
+  dishData: Dish ={
+    title: '',
+    price: undefined
+  };
+  // public onYourRestaurantForm: FormGroup;
 
-  public onYourRestaurantForm: FormGroup;
-
-  constructor(private _fb: FormBuilder,private restaurantLS: RestaurantListService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private _fb: FormBuilder,private restaurantLS: RestaurantListService, 
+    private angularFireDatabase: AngularFireDatabase,public loadingCtrl: LoadingController,
+    public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillLoad() {
@@ -32,25 +38,30 @@ export class EditrestaurantPage {
     console.log(this.navParams.get('restaurant'));
   }
 
-  ngOnInit() {
-    this.onYourRestaurantForm = this._fb.group({
-      profiledata: [true, Validators.compose([
-        Validators.required
-      ])],
-      restaurantTitle: ['', Validators.compose([
-        Validators.required
-      ])],
-      restaurantAddress: ['', Validators.compose([
-        Validators.required
-      ])],
-      restaurantType: ['', Validators.compose([
-        Validators.required
-      ])]
+  // ngOnInit() {
+  //   this.onYourRestaurantForm = this._fb.group({
+  //     profiledata: [true, Validators.compose([
+  //       Validators.required
+  //     ])],
+  //     restaurantTitle: ['', Validators.compose([
+  //       Validators.required
+  //     ])],
+  //     restaurantAddress: ['', Validators.compose([
+  //       Validators.required
+  //     ])],
+  //     restaurantType: ['', Validators.compose([
+  //       Validators.required
+  //     ])]
+  //   });
+  // }
+  saveRestaurant(dishData: Dish){
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      spinner: 'crescent',
     });
-  }
-  saveRestaurant(restaurant: Restaurant){
-    this.restaurantLS.editRestaurant(restaurant).then(()=>{
-      this.navCtrl.pop();
-    });
+    loader.present();
+      this.angularFireDatabase.list(`restaurant-list/${this.restaurant.key}/dish-list`).push(this.dishData)
+    .then(()=> loader.dismiss()
+    );
   }
 }

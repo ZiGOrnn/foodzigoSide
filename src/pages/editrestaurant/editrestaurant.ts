@@ -18,13 +18,7 @@ import { RestaurantListService } from '../../services/restaurant-list/restaurant
 })
 export class EditrestaurantPage {
 
-  // restaurant: Restaurant;
-
-  restaurant: Restaurant = {
-    title: '',
-    address: '',
-    type: '',
-  };
+  restaurant: Restaurant;
 
   public onYourRestaurantForm: FormGroup;
 

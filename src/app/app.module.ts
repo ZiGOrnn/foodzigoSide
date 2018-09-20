@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2'
 import { FIREBASE_CONFIG } from './firebase.comfig';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { RestaurantListService } from '../services/restaurant-list/restaurant-list-service';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database'
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    RestaurantListService
   ]
 })
 export class AppModule { }

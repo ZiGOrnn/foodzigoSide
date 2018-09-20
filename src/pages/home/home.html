@@ -27,7 +27,7 @@
 
   <ion-list no-line>
 
-    <button ion-item detail-none no-margin *ngFor="let p of menuRestaurant" (click)="onFood(p)">
+    <!-- <button ion-item detail-none no-margin *ngFor="let p of menuRestaurant" (click)="onFood(p)">
       <ion-thumbnail item-start>
         <img src="../../assets/imgs/F.png">
       </ion-thumbnail>
@@ -41,6 +41,25 @@
         <span class="button-inner">
           <ion-icon name="star"></ion-icon>
           {{p.tags}}
+        </span>
+      </button>
+
+    </button> -->
+
+    <button ion-item detail-none no-margin *ngFor="let item of restaurant$ | async" (click)="onFood(p)">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/F.png">
+      </ion-thumbnail>
+      <div text-capitalize>
+        <h2 ion-text color="dark" class="fw500">{{item.title}}</h2>
+        <p class="text-12x" ion-text color="star">{{item.type}}</p>
+        <p ion-text class="text-12"><span>1 km : 30-60min</span></p>
+      </div>
+
+      <button ion-button clear icon-left text-start item-right color="star">
+        <span class="button-inner">
+          <ion-icon name="star"></ion-icon>
+          4.4
         </span>
       </button>
 

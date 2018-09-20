@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { RestaurantListService } from '../../services/restaurant-list/restaurant-list-service';
+import { Observable } from 'rxjs/Observable';
+import { Restaurant } from '../../data/restaurant';
+
 
 
 @Component({
@@ -10,46 +14,19 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class HomePage {
   [x: string]: any;
+  restaurant$: Observable<Restaurant[]>
 
   menuRestaurant: Array<{ title: string, address: string, component: any, tags: string, id: number }>;
 
-  constructor(private angularFireAuth: AngularFireAuth,
+  constructor(private angularFireAuth: AngularFireAuth, private restaurantLS: RestaurantListService, 
     public navCtrl: NavController, public menuCtrl: MenuController) {
 
-    // this.dishRestaurant = [
-    //   {
-    //     id: 1,
-    //     address: "ปทุมวัน",
-    //     title: "Clinton St. Baking Company",
-    //     picture: "../assets/imgs/restaurants/restaurant14.jpg",
-    //     thumbnail: "../assets/imgs/restaurants/restaurant14sq.jpg",
-    //     images: [],
-    //     tags: "Oriental",
-    //     rating: 3.8,
-    //     dishes: [{
-    //         id: 1,
-    //         name: "เบเกอรี/เค้ก",
-    //         price: 120,
-    //         picture: "../assets/imgs/dishes/dish09.jpg"
-    //     }]
-    // },
-    // {
-    //     id: 2,
-    //     address: "ปทุมวัน",
-    //     title: "Patissez",
-    //     picture: "../assets/imgs/restaurants/restaurant03.jpg",
-    //     thumbnail: "../assets/imgs/restaurants/restaurant03sq.jpg",
-    //     images: [],
-    //     tags: "Variable",
-    //     rating: 4.2,
-    //     dishes: [{
-    //         id: 1,
-    //         name: "Lemon Meringue Donut",
-    //         price: 130,
-    //         picture: "../assets/imgs/dishes/dish06.jpg"
-    //     }]
-    // }
-    // ];
+    this.restaurant$ = this.restaurantLS
+    .getRestaurantList().snapshotChanges().map(caches => {
+      return caches.map(c =>({
+        key: c.payload.key, ...c.payload.val()
+      }));
+    });
 
     this.menuRestaurant = [
       { title: 'ร้านอาหารลุงไข่', address: 'Mahasarakham', component: 'MenuPage', tags: '4.4', id: 1 },
@@ -65,7 +42,7 @@ export class HomePage {
       { title: 'ร้านอาหารก้อยปลา', address: 'Mahasarakham', component: 'MenuPage', tags: '3.8', id: 11 },
       { title: 'ร้านอาหารน่าน', address: 'Mahasarakham', component: 'MenuPage', tags: '4.5', id: 12 }
     ];
-    console.log("ข็อมูล1" + this.menuRestaurant);
+    
   }
 
   openRestaurant(page) {

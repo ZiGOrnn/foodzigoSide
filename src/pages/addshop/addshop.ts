@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Restaurant } from '../../data/restaurant';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs';
+import { RestaurantListService } from '../../services/restaurant-list/restaurant-list-service';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the AddshopPage page.
@@ -16,13 +22,44 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddshopPage {
 
+  restaurant$: Observable<Restaurant[]>
+
+  restaurant: Restaurant = {
+    title: '',
+    address: '',
+    type: '',
+  };
+
   public onYourRestaurantForm: FormGroup;
 
-  constructor(private _fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+  constructor(private angularFireAuth: AngularFireAuth, private angularFireDatabase: AngularFireDatabase,
+    private restaurantLS: RestaurantListService, 
+    private _fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, 
+    public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+
+      this.restaurant$ = this.restaurantLS
+      .getRestaurantList().snapshotChanges().map(caches => {
+        return caches.map(c =>({
+          key: c.payload.key, ...c.payload.val()
+        }));
+      });
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddshopPage');
+  }
+
+  addRestaurant(restaurant: Restaurant) {
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      spinner: 'crescent',
+    });
+    loader.present();
+    this.restaurantLS.addRestaurant(restaurant).then(ref =>{
+      console.log(ref.key);
+      loader.dismiss();
+    });
   }
 
   ngOnInit() {
@@ -44,27 +81,7 @@ export class AddshopPage {
 
   // process send button
   sendData() {
-    // send booking info
-    let loader = this.loadingCtrl.create({
-      content: "Please wait..."
-    });
-    // show message
-    let toast = this.toastCtrl.create({
-      showCloseButton: true,
-      cssClass: 'profiles-bg',
-      message: 'Your restaurant was registered!',
-      duration: 3000,
-      position: 'bottom'
-    });
 
-    loader.present();
-
-    setTimeout(() => {
-      loader.dismiss();
-      toast.present();
-      // back to home page
-      this.navCtrl.setRoot('page-home');
-    }, 3000)
   }
 
 }

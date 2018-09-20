@@ -55,7 +55,7 @@ export class MyApp {
       { title: 'Like Restaurant', component: 'LikePage', icon: 'md-thumbs-up' }
     ];
     this.menuAdd = [
-      { title: 'Setting', component: 'AccountPage', icon: 'cog' },
+      { title: 'Setting Profile', component: 'AccountPage', icon: 'cog' },
       { title: 'Help', component: 'CartPage', icon: 'help-circle' }
     ];
   }
